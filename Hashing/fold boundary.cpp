@@ -17,7 +17,7 @@ class fold_boundary
 		cin>>mem_size;
 		num_of_digits=count(mem_size-1);
 		fill_mem_arr();
-		cout<<"num of digits"<<num_of_digits<<endl;
+//		cout<<"num of digits"<<num_of_digits<<endl;
 		menu();
 	}
 	
@@ -65,7 +65,7 @@ class fold_boundary
 		int res = 0;
 		if(n<10&&n>0)
 		{
-			cout<<"here";
+//			cout<<"here";
 			res=n*pow(10,num_of_digits-1);
 		}
 		else{
@@ -98,9 +98,9 @@ class fold_boundary
 //			cout<<"here";	
 //			length_num+=1;	
 //		}
-		cout<<"length_num"<<length_num<<endl;
+//		cout<<"length_num"<<length_num<<endl;
 		num_of_pairs=(length_num+1)/num_of_digits;
-		cout<<"num pair"<<num_of_pairs<<"\n";
+//		cout<<"num pair"<<num_of_pairs<<"\n";
 	}
 	void fold()
 	{
@@ -119,8 +119,8 @@ class fold_boundary
 //		
 //			cout<<"num of digits"<<num_of_digits;
 			num=arr[0]%(int)pow(10,num_of_digits);
-			cout<<"number "<<num<<" "<<endl;
-			cout<<"Number of digits of number"<<length_num<<endl;
+//			cout<<"number "<<num<<" "<<endl;
+//			cout<<"Number of digits of number"<<length_num<<endl;
 //			if(i%2==1)
 //			{
 //				cout<<"i  is "<<i<<endl;
@@ -130,19 +130,19 @@ class fold_boundary
 			if(num_of_pairs%2==0)
 			{
 				sum+=reverse(num);
-				cout<<"reverse digit is "<<reverse(num)<<endl;
+//				cout<<"reverse digit is "<<reverse(num)<<endl;
 			}
 			else
 			{
 			if(i%2==0)
 			{
 			sum+=reverse(num);
-			cout<<"reverse digit is "<<reverse(num)<<endl;
+//			cout<<"reverse digit is "<<reverse(num)<<endl;
 			}
 			else
 			sum+=num;
 			}
-			cout<<"sum is "<<sum<<endl;
+//			cout<<"sum is "<<sum<<endl;
 //			cout<<"arr[0] before division"<<arr[0]<<endl;
 			arr[0]=arr[0]/pow(10,num_of_digits);
 //			cout<<"arr[0] after division"<<arr[0]<<endl;
@@ -151,7 +151,7 @@ class fold_boundary
 		{
 //			198%100=98
 			sum=sum%(int)pow(10,num_of_digits);
-			cout<<"sum is "<<sum<<endl;
+//			cout<<"sum is "<<sum<<endl;
 		}
 		int j = sum%mem_size;
 		insert_into_mem(memory,temp,j);
@@ -174,7 +174,7 @@ class fold_boundary
 					exit(0);
 				}	
 			}
-			cout<<"n is "<<n<<" j is "<<j<<" memory[j] "<<memory[j]<<endl; 
+//			cout<<"n is "<<n<<" j is "<<j<<" memory[j] "<<memory[j]<<endl; 
 			memory[j]=(n);cout<<"Element inserted at "<<j<<endl;
 		}
 		else
