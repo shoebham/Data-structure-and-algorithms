@@ -11,16 +11,19 @@ class fold_boundary
 		int arr[100];string memory[1000];
 		int rev_arr[10];
 		string temp;
+		
+	//constructor
 	fold_boundary()
 	{
 		cout<<"Enter size of memory\n";
 		cin>>mem_size;
-		num_of_digits=count(mem_size-1);
+		num_of_digits=count(mem_size-1); // calculates of how many digits the pair will be
 		fill_mem_arr();
 //		cout<<"num of digits"<<num_of_digits<<endl;
 		menu();
 	}
 	
+	//menu
 	void menu()
 	{
 		int choice;		
@@ -44,7 +47,16 @@ class fold_boundary
 		}while(choice!=3);
 	}	
 	
-	
+// power function 
+//	int pow(int base,int exponent)
+//	{
+// 	if(exponent==0)
+//  	 return 1;
+//  
+//  	return  base*pow(base,exponent-1);
+//	}
+		
+		//initializes memory with -1
 		void fill_mem_arr()
 		{	
 		for(int i=0;i<mem_size;i++)
@@ -53,6 +65,7 @@ class fold_boundary
 			}		
 		}
 		
+	// returns number of digits
 	int count(int n)
 	{
 		if(n==0)
@@ -60,6 +73,7 @@ class fold_boundary
 		return 1+count(n/10);
 	}
 	
+	//reverses a string (reverses 1 to 10)
 	int reverse(int n)
 	{
 		int res = 0;
@@ -68,27 +82,25 @@ class fold_boundary
 //			cout<<"here";
 			res=n*pow(10,num_of_digits-1);
 		}
-		else{
-    	while (n > 0) 
+		else
 		{
-			//1 = 1%10=1 1/10=0
-//			121 = 1 2 1 
-//			123456 = 1 2 3 4 5 6
-//			012345 = 54+23+10
-        res = res * 10 + n % 10;
-        n = n / 10;
-   		}
+    		while (n > 0) 
+			{
+        		res = res * 10 + n % 10;
+        		n = n / 10;
+   			}
    		}
 //   		if(count(res)<num_of_digits)
 //		   res=res*pow(10,num_of_digits-count(res));
 	return res;	
 	}
 	
+	//asks for input from the user 
 	void input_data()
 	{
 		cout<<"Enter data"<<endl;
 		cin >> temp;
-		stringstream ss(temp);
+		stringstream ss(temp);	//converts string to integer
 		ss>>arr[0]; 
 		original_num=arr[0];
 //		temp=arr[0];
@@ -99,26 +111,21 @@ class fold_boundary
 //			length_num+=1;	
 //		}
 //		cout<<"length_num"<<length_num<<endl;
-		num_of_pairs=(length_num+1)/num_of_digits;
+		num_of_pairs=(length_num+1)/num_of_digits;  //calculates the number of pairs that will be made acc to memory size
 //		cout<<"num pair"<<num_of_pairs<<"\n";
 	}
+	
+	// reverses alternate pairs leaving the middle one if there is no middle it will reverse every pair
 	void fold()
 	{
-//		20
-//		12345
-//		12345%100=45
-//		12345/100=123;
-//		123%100=23;
-//		123/100=1;
-//		54+23
-//		10+23+54=87;
+
 		int i=0;
 		int sum=0;
 		for(int i=0;i<=num_of_pairs;i++)
 		{
 //		
 //			cout<<"num of digits"<<num_of_digits;
-			num=arr[0]%(int)pow(10,num_of_digits);
+			num=arr[0]%(int)pow(10,num_of_digits);  // calculates last number acc to digits of pair;
 //			cout<<"number "<<num<<" "<<endl;
 //			cout<<"Number of digits of number"<<length_num<<endl;
 //			if(i%2==1)
@@ -127,6 +134,8 @@ class fold_boundary
 //				continue;
 //			}
 //			rev_arr[i]=reverse(num);
+			
+			// if there is no middle reverse every pair
 			if(num_of_pairs%2==0)
 			{
 				sum+=reverse(num);
@@ -134,55 +143,61 @@ class fold_boundary
 			}
 			else
 			{
-			if(i%2==0)
-			{
-			sum+=reverse(num);
-//			cout<<"reverse digit is "<<reverse(num)<<endl;
-			}
-			else
-			sum+=num;
+				if(i%2==0) // reverse alternate pairs
+				{
+					sum+=reverse(num);
+//					cout<<"reverse digit is "<<reverse(num)<<endl;
+				}
+				else 	//does not reverses middle alternatives
+					sum+=num;
 			}
 //			cout<<"sum is "<<sum<<endl;
 //			cout<<"arr[0] before division"<<arr[0]<<endl;
-			arr[0]=arr[0]/pow(10,num_of_digits);
+			arr[0]=arr[0]/pow(10,num_of_digits);  //calculates the remaining number after removing the first pair and so on
 //			cout<<"arr[0] after division"<<arr[0]<<endl;
 		}
+		
+		//if the digits of total sum is greater than digits of memory 
 		if(count(sum)>num_of_digits)
 		{
-//			198%100=98
-			sum=sum%(int)pow(10,num_of_digits);
+			sum=sum%(int)pow(10,num_of_digits); //calculates the number after removing starting digits 
 //			cout<<"sum is "<<sum<<endl;
 		}
-		int j = sum%mem_size;
-		insert_into_mem(memory,temp,j);
+		int j = sum%mem_size;	//calculates index to store location
+		insert_into_mem(memory,temp,j); // inserts into memory
 //		memory[j]=temp;
 	}
+	
+	//insert into memory
 	void insert_into_mem(string mem[],string n,int j)
 	{
 		
-		if(mem[j] != "-1")
+		if(mem[j] != "-1") //checks for collision
 		{
 			cout<<"Collision"<<endl;
-			int starting_point=j;
-			while(memory[j]!="-1")
+			int starting_point=j; // initializes starting to point to check if memory is full
+			while(memory[j]!="-1") //iterates while index is not equal to empty location
 			{
-				j=(1+j)%mem_size;
-				if(starting_point==j)
+				j=(1+j)%mem_size; //increases index and resets to 0 when memory end is reached
+				
+				if(starting_point==j) //index reaches starting point and memory is full
 				{
-					display();
-					cout<<"Memory full";
+					display(); //display memory
+					cout<<"Memory full"; 
 					exit(0);
 				}	
 			}
 //			cout<<"n is "<<n<<" j is "<<j<<" memory[j] "<<memory[j]<<endl; 
-			memory[j]=(n);cout<<"Element inserted at "<<j<<endl;
+			memory[j]=(n);cout<<"Element inserted at "<<j<<endl; 
 		}
-		else
+		else //if there is no collision simply insert the element
 		{
 			memory[j]=temp;
 			cout<<"Element inserted at "<<j<<endl;
 		}
 	}
+	
+	//display memory
 	void display()
 	{
 		cout<<"-------------\n";
@@ -208,6 +223,5 @@ int main()
 {
 	fold_boundary f;
 	f.menu();	
-	
 	return 0;
 }

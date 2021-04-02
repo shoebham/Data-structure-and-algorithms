@@ -5,8 +5,9 @@ class modulo_division
 {
 	public:
 	int size=0,mem_size,choice=0;
-	
 	int arr[100],memory[100];
+
+		//constructor
 		modulo_division()
 		{
 			cout<<"Enter size of memory "<<endl;
@@ -15,7 +16,7 @@ class modulo_division
 			menu();
 		}
 		
-		
+		//menu
 		void menu()
 		{
 			do
@@ -38,6 +39,8 @@ class modulo_division
 				}
 			}while(choice!=3);
 		}
+		
+	//initializes memory array 
 	void fill_mem_arr()
 	{
 		for(int i=0;i<mem_size;i++)
@@ -47,6 +50,7 @@ class modulo_division
 			
 	}
 	
+	//asks for data from the user
 	void input_data()
 	{	
 		cout<<"Enter data\n";
@@ -54,21 +58,25 @@ class modulo_division
 	}
 
 
+	//modulo division function
 	void modulo()
 	{
-		int j=arr[0]%(mem_size);
-		if(memory[j]==-1)
+		
+		int j=arr[0]%(mem_size); //calculates index 
+		
+		if(memory[j]==-1)	//if index is empty
 		{
 			memory[j]=arr[0];
 		}
-		else
+		else 	//there is collision
 		{
 			cout<<"Collision\n";
-			int starting_point=j;
+			int starting_point=j; //starting point to check for memory full
 			while(memory[j]!=-1)
 			{
-				j=(1+j)%mem_size;
-				if(starting_point==j)
+				j=(1+j)%mem_size; // calcualtes index at each iteration 
+				
+				if(starting_point==j) //if starting point and current index is same then memory is full
 				{
 					display_memory();
 					cout<<"Memory full";
@@ -79,6 +87,7 @@ class modulo_division
 		}
 	}
 
+	//displays memory
 	void display_memory()
 	{
 		cout<<"-------------\n";
