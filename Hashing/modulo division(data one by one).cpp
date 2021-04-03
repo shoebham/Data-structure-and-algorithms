@@ -67,13 +67,15 @@ class modulo_division
 		if(memory[j]==-1)	//if index is empty
 		{
 			memory[j]=arr[0];
+			cout<<"Element inserted at "<<j<<endl;
 		}
 		else 	//there is collision
 		{
-			cout<<"Collision\n";
+			
 			int starting_point=j; //starting point to check for memory full
 			while(memory[j]!=-1)
 			{
+				cout<<"Collision at "<<j<<"\n";
 				j=(1+j)%mem_size; // calcualtes index at each iteration 
 				
 				if(starting_point==j) //if starting point and current index is same then memory is full
@@ -84,7 +86,9 @@ class modulo_division
 				}
 			}
 			memory[j]=arr[0];
+			cout<<"Element inserted at "<<j<<endl;
 		}
+		
 	}
 
 	//displays memory

@@ -174,10 +174,12 @@ class fold_boundary
 		
 		if(mem[j] != "-1") //checks for collision
 		{
-			cout<<"Collision"<<endl;
+			
+			
 			int starting_point=j; // initializes starting to point to check if memory is full
 			while(memory[j]!="-1") //iterates while index is not equal to empty location
 			{
+				cout<<"Collision at "<<j<<"\n";
 				j=(1+j)%mem_size; //increases index and resets to 0 when memory end is reached
 				
 				if(starting_point==j) //index reaches starting point and memory is full
