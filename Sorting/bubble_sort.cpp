@@ -9,6 +9,7 @@ class bubble_sort
 	vector<int> arr;
 	int size,total=0;
 	
+	//constructor
 	bubble_sort()
 	{
 		input_arr();
@@ -16,6 +17,7 @@ class bubble_sort
 		display();
 	}
 	
+	//takes input
 	void input_arr()
 	{
 		cout<<"Enter size of array\n";
@@ -30,6 +32,7 @@ class bubble_sort
 		}
 	}
 	
+	///sorts the array by comparing each element with its adjacent element
 	void sort()
 	{
 		
@@ -64,6 +67,7 @@ class bubble_sort
 		cout<<"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";	
 		}
 	}
+	//displays the sorted array
 	void display()
 	{
 		for(int i=0;i<size;i++)
