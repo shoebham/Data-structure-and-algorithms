@@ -132,7 +132,7 @@ class queue
 				cout<<"----------"<<endl;
 				cout<<n<<" removed."<<endl;
 				cout<<"----------"<<endl;
-				cout<<"rear after removing "<<rear<<" front after removing "<<front<<endl;
+//				cout<<"rear after removing "<<rear<<" front after removing "<<front<<endl;
 			}
 		}
 		void deleteRear()
@@ -163,7 +163,7 @@ class queue
 				cout<<"----------"<<endl;
 				cout<<n<<" removed."<<endl;
 				cout<<"----------"<<endl;
-				cout<<"rear after removing "<<rear<<" front after removing "<<front<<endl;
+//				cout<<"rear after removing "<<rear<<" front after removing "<<front<<endl;
 			}
 		}
 		void display()
@@ -176,7 +176,7 @@ class queue
 			}
 			else
 			{
-				cout<<"front is "<<front<<" rear is "<<rear<<endl;
+//				cout<<"front is "<<front<<" rear is "<<rear<<endl;
 				cout<<"arr[front] = "<<arr[front]<<" arr[rear] = "<<arr[rear]<<endl;
 				int i;
 				for(i=front;i!=rear;i=(i+1)%size)

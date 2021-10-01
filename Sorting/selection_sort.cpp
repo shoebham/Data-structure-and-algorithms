@@ -7,7 +7,7 @@ class selection_sort
 	
 	public:
 	vector<int> arr;
-	int size,total=0;
+	int size,total=0,comp=0;
 	
 	//constructor
 	selection_sort()
@@ -48,7 +48,7 @@ class selection_sort
 					min=arr[j];
 					minIndex=j;
 				}
-			
+			comp++;
 			}
 //			int temp = arr[i];
 //			arr[i]=arr[minIndex];
@@ -62,8 +62,10 @@ class selection_sort
 				}		cout<<"Minimum element: "<<min<<", Swapping "<<arr[i]<<" and "<<arr[minIndex];
 				cout<<endl;
 			swap(arr[i],arr[minIndex]);
+			total++;
 		}
 		cout<<"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
+		cout<<"Total comparisions "<<comp<<" Total swaps "<< total <<endl;	
 	}
 	
 	//display the sorted array

@@ -70,9 +70,9 @@ class queue
 				
 				arr[rear] = n;
 				prior[rear] = p;
-				cout<<"n is "<<n<<" rear is "<<rear<<endl;			
-				cout<<"p is "<<p<<" rear is "<<rear<<endl;
-				cout<<"arr[rear] is "<<arr[rear];
+//				cout<<"n is "<<n<<" rear is "<<rear<<endl;			
+//				cout<<"p is "<<p<<" rear is "<<rear<<endl;
+//				cout<<"arr[rear] is "<<arr[rear];
 			}
 		}
 		void dequeue()
@@ -108,7 +108,7 @@ class queue
 			{
 				for(int j=front;j<=rear-1;j++)
 				{
-					if(prior[i]>prior[j])
+					if(prior[i]<prior[j])
 					{
 						int temp=arr[j];
 						arr[j]=arr[j+1];
@@ -135,7 +135,7 @@ class queue
 			{
 				for(int i=front;i<=rear;i++)
 			{
-				cout<<"-----arr[i]------"<<endl;
+//				cout<<"-----arr[i]------"<<endl;
 				 cout<<"|"<<arr[i]<<"|";
 			}
 			}

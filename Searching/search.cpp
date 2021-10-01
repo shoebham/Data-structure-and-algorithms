@@ -56,7 +56,7 @@ class search
 			{
 				cout<<"Found element at:"<<i+1<<endl;
 //				exit(0);
-			}
+			}	
 		}
 //		cout<<"No element found!!"<<endl;
 	}
@@ -66,15 +66,16 @@ class search
 		sort(arr);
 		cout<<"Enter element you want to find"<<endl;
 		cin>>key;
-		
-		
-		int low=0,mid,high=size-1;
+		int low=0,mid,high=size-1,steps=0;
 		while(low<=high)
 		{
 			mid = (high+low)/2;
+			steps++;
+			cout<<"mid is "<<mid<<" ";
 			if(arr[mid]==key)
 			{
 				cout<<"Element found at: "<<mid+1<<endl;
+				cout<<"Number of steps "<<steps<<endl;
 				break;
 			}
 			if(arr[mid]>key)
@@ -89,7 +90,6 @@ class search
 		if(arr[mid]!=key) 
 			{
 				cout<<"No element found!!"<<endl;
-				
 			}
 	}
 	void interpolation()

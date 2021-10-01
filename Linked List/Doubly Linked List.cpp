@@ -441,21 +441,36 @@ void reverse()
 	}
 	else
 	{
-	list=head;
-	fix=head;
-	last=NULL;
-	temp=list->next;
+//	list=head;
+//	fix=head;
+//	last=NULL;
+//	temp=list->next;
+//	while(temp!=NULL)
+//	{
+//		last=list;
+//		list=temp;
+//		temp=temp->next;
+//		list->next=last;
+//		last->prev=list;
+//	}
+//	head=list;
+//	fix->next=NULL;
+//	list->prev=NULL;
+
+	node* curr=head;
+	temp=head;
+	node* start;
+	
 	while(temp!=NULL)
 	{
-		last=list;
-		list=temp;
-		temp=temp->next;
-		list->next=last;
-		last->prev=list;
+		start=curr->prev;
+		curr->prev=curr->next;
+		curr->next=start;
+		temp=temp->prev;
+		curr=temp;
 	}
-	head=list;
-	fix->next=NULL;
-	list->prev=NULL;
+	cout<<"start is "<<start->data;
+	head=start->prev;
 	}
 //	if(head==NULL)
 //	{

@@ -7,7 +7,7 @@ class bubble_sort
 {
 	public:
 	vector<int> arr;
-	int size,total=0;
+	int size,total=0,passes=0,comp=0;
 	
 	//constructor
 	bubble_sort()
@@ -32,13 +32,17 @@ class bubble_sort
 		}
 	}
 	
-	///sorts the array by comparing each element with its adjacent element
+	//sorts the array by comparing each element with its adjacent element
 	void sort()
 	{
-		
+//		for(int i=0;i<size;i++)
+//		cout<<"|"<<i<<"|";
+//		cout<<endl;
 		cout<<"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
-		for(int i=0;i<size;i++)
-		{
+	
+		for(int i=0;i<size-1;i++)
+		{	bool flag =false;
+			passes++;
 //			cout<<"Pass "<<i<<":\t|\n";
 			for(int j=0;j<size-1;j++)
 			{
@@ -51,20 +55,25 @@ class bubble_sort
 				
 				if(arr[j]<arr[j+1])
 				{
-					cout<<"("<<arr[j+1]<<" > "<<arr[j]<<") No swap \t|";
-				}
+					cout<<"("<<arr[j+1]<<" > "<<arr[j]<<") No swap \t";
+//					flag=false;
 				
+				}
 				if(arr[j]>arr[j+1])
 				{
-					cout<<"("<<arr[j]<<" > "<<arr[j+1]<<") swap \t|";
+					cout<<"("<<arr[j+1]<<" < "<<arr[j]<<") swap \t";
 					int temp=arr[j];
 					arr[j]=arr[j+1];
 					arr[j+1]=temp;
 					total++;
+					flag=true;
 				}
+				comp++;
 				cout<<endl;
 			}
 		cout<<"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";	
+//		if(!flag)
+//		break;
 		}
 	}
 	//displays the sorted array
@@ -74,7 +83,7 @@ class bubble_sort
 		{
 			cout<<"|"<<arr[i]<<"|";
 		}
-		cout<<"\nTotal passes: "<<size-1<<" Total comparisions: "<<size*(size-1)<<" Total swaps: "<<total<<endl;
+		cout<<"\nTotal passes: "<<passes<<" Total comparisions: "<<comp<<" Total swaps: "<<total<<endl;
 	}
 };
 int main()

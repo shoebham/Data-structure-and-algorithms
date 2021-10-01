@@ -8,7 +8,7 @@ class fold_boundary
 {
 	public:
 		int mem_size,num_of_digits,res=0,num=0,num_of_pairs=0,length_num,original_num;
-		int arr[100];string memory[1000];
+		int arr[10000];string memory[10000];
 		int rev_arr[10];
 		string temp;
 		
@@ -115,7 +115,7 @@ class fold_boundary
 //		cout<<"num pair"<<num_of_pairs<<"\n";
 	}
 	
-	// reverses alternate pairs leaving the middle one if there is no middle it will reverse every pair
+
 	void fold()
 	{
 
@@ -135,28 +135,46 @@ class fold_boundary
 //			}
 //			rev_arr[i]=reverse(num);
 			
-			// if there is no middle reverse every pair
+			// if there is no middle reverse only boundary
+//			cout<<"numpairs "<<num_of_pairs<<endl;
 			if(num_of_pairs%2==0)
 			{
+//				cout<<"num = "<<num<<endl;
+				if(i==0||i==num_of_pairs-1)
 				sum+=reverse(num);
+				else
+				sum+=num;
 //				cout<<"reverse digit is "<<reverse(num)<<endl;
 			}
 			else
 			{
-				if(i%2==0) // reverse alternate pairs
-				{
-					sum+=reverse(num);
+//				if(i%2==0) // reverse alternate pairs
+//				{
+//					sum+=reverse(num);
+//					cout<<"sum= "<<sum<<endl;
 //					cout<<"reverse digit is "<<reverse(num)<<endl;
-				}
-				else 	//does not reverses middle alternatives
+//				}
+//				else 	//does not reverses middle alternatives
+//					sum+=num;
+//					cout<<"sum= "<<sum<<endl;
+				int mid=num_of_pairs/2;
+				if(i==mid)
+				{
 					sum+=num;
+					cout<<"sum "<<num;
+				}
+				else
+				{
+				sum+=reverse(num);
+			cout<<" s um "<<num;
+				}
 			}
 //			cout<<"sum is "<<sum<<endl;
 //			cout<<"arr[0] before division"<<arr[0]<<endl;
 			arr[0]=arr[0]/pow(10,num_of_digits);  //calculates the remaining number after removing the first pair and so on
 //			cout<<"arr[0] after division"<<arr[0]<<endl;
 		}
-		
+		cout<<"sum is "<<sum<<endl;
 		//if the digits of total sum is greater than digits of memory 
 		if(count(sum)>num_of_digits)
 		{
